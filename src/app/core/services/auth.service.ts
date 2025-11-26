@@ -8,7 +8,7 @@ import { LoginRequest, LoginResponse, Usuario } from '../models/auth.models';
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:5019/api/auth';
+    private apiUrl = '/api/auth';
     private currentUserSubject: BehaviorSubject<Usuario | null>;
     public currentUser: Observable<Usuario | null>;
     private isBrowser: boolean;

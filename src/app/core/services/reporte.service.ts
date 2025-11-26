@@ -7,7 +7,7 @@ import { Reporte } from '../models/business.models';
   providedIn: 'root'
 })
 export class ReporteService {
-  private apiUrl = 'http://localhost:5019/api/reportes';
+  private apiUrl = '/api/reportes';
 
   constructor(private http: HttpClient) { }
 

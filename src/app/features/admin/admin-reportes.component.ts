@@ -223,7 +223,7 @@ export class AdminReportesComponent implements OnInit {
     this.loading = true;
 
     // Cargar tiendas
-    this.http.get<any[]>('http://localhost:5019/api/tiendas').subscribe({
+    this.http.get<any[]>('/api/tiendas').subscribe({
       next: (tiendas) => {
         this.tiendas = tiendas.map(t => ({
           ...t,
@@ -237,7 +237,7 @@ export class AdminReportesComponent implements OnInit {
     });
 
     // Cargar productos
-    this.http.get<any[]>('http://localhost:5019/api/productos').subscribe({
+    this.http.get<any[]>('/api/productos').subscribe({
       next: (productos) => {
         this.stats.totalProductos = productos.length;
         this.productosStockBajo = productos.filter((p: any) =>
@@ -249,7 +249,7 @@ export class AdminReportesComponent implements OnInit {
     });
 
     // Cargar usuarios
-    this.http.get<any[]>('http://localhost:5019/api/usuarios').subscribe({
+    this.http.get<any[]>('/api/usuarios').subscribe({
       next: (usuarios) => {
         this.stats.totalUsuarios = usuarios.length;
         this.stats.usuariosActivos = usuarios.filter((u: any) => Number(u.estado) === 0).length;

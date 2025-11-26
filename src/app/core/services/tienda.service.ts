@@ -16,7 +16,7 @@ export interface Tienda {
     providedIn: 'root'
 })
 export class TiendaService {
-    private apiUrl = 'http://localhost:5019/api/tiendas';
+    private apiUrl = '/api/tiendas';
 
     constructor(private http: HttpClient) { }
 

@@ -7,7 +7,7 @@ import { Compra } from '../models/business.models';
   providedIn: 'root'
 })
 export class CompraService {
-  private apiUrl = 'http://localhost:5019/api/compras';
+  private apiUrl = '/api/compras';
 
   constructor(private http: HttpClient) { }
 

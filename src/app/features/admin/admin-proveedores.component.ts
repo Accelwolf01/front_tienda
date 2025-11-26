@@ -224,7 +224,7 @@ export class AdminProveedoresComponent implements OnInit {
   }
 
   cargarTiendas() {
-    this.http.get<any[]>('http://localhost:5019/api/tiendas').subscribe({
+    this.http.get<any[]>('/api/tiendas').subscribe({
       next: (data) => {
         this.tiendas = data;
       },
@@ -268,7 +268,7 @@ export class AdminProveedoresComponent implements OnInit {
     }
 
     this.loading = true;
-    this.http.post('http://localhost:5019/api/proveedores', this.formulario).subscribe({
+    this.http.post('/api/proveedores', this.formulario).subscribe({
       next: () => {
         this.cargarProveedores();
         this.cancelar();
@@ -288,7 +288,7 @@ export class AdminProveedoresComponent implements OnInit {
 
   eliminar(proveedor: Proveedor) {
     if (confirm(`¿Eliminar el proveedor "${proveedor.nombreProveedor}"?`)) {
-      this.http.delete(`http://localhost:5019/api/proveedores/${proveedor.idProveedor}`).subscribe({
+      this.http.delete(`/api/proveedores/${proveedor.idProveedor}`).subscribe({
         next: () => {
           this.cargarProveedores();
         },

@@ -172,7 +172,7 @@ export class AdminProductosComponent implements OnInit {
 
   cargarProductos() {
     this.loading = true;
-    this.http.get<any[]>('http://localhost:5019/api/productos').subscribe({
+    this.http.get<any[]>('/api/productos').subscribe({
       next: (data) => {
         this.productos = data.map(p => ({
           ...p,

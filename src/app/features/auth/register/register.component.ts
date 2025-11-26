@@ -173,7 +173,7 @@ export class RegisterComponent implements OnInit {
       rol: 1
     };
 
-    this.http.post<any>('http://localhost:5019/api/auth/registro', usuarioData)
+    this.http.post<any>('/api/auth/registro', usuarioData)
       .pipe(first())
       .subscribe({
         next: (usuarioResponse) => {
@@ -186,7 +186,7 @@ export class RegisterComponent implements OnInit {
             idDueño: usuarioResponse.idUsuario
           };
 
-          this.http.post('http://localhost:5019/api/tiendas', tiendaData)
+          this.http.post('/api/tiendas', tiendaData)
             .pipe(first())
             .subscribe({
               next: () => {

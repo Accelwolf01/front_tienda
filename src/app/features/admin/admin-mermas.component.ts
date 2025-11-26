@@ -138,7 +138,7 @@ export class AdminMermasComponent implements OnInit {
   }
 
   cargarTiendas() {
-    this.http.get<any[]>('http://localhost:5019/api/tiendas').subscribe({
+    this.http.get<any[]>('/api/tiendas').subscribe({
       next: (data) => {
         this.tiendas = data;
       },

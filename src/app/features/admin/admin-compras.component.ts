@@ -118,7 +118,7 @@ export class AdminComprasComponent implements OnInit {
   }
 
   cargarTiendas() {
-    this.http.get<any[]>('http://localhost:5019/api/tiendas').subscribe({
+    this.http.get<any[]>('/api/tiendas').subscribe({
       next: (data) => {
         this.tiendas = data;
       },
@@ -128,7 +128,7 @@ export class AdminComprasComponent implements OnInit {
 
   cargarCompras() {
     // Intentar cargar todas las compras
-    this.http.get<any[]>('http://localhost:5019/api/compras').subscribe({
+    this.http.get<any[]>('/api/compras').subscribe({
       next: (data) => {
         this.compras = data;
       },

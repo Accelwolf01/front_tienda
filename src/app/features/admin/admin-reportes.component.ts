@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface EstadisticasGlobales {
   totalTiendas: number;
@@ -223,7 +224,7 @@ export class AdminReportesComponent implements OnInit {
     this.loading = true;
 
     // Cargar tiendas
-    this.http.get<any[]>('/api/tiendas').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/tiendas`).subscribe({
       next: (tiendas) => {
         this.tiendas = tiendas.map(t => ({
           ...t,
@@ -237,7 +238,7 @@ export class AdminReportesComponent implements OnInit {
     });
 
     // Cargar productos
-    this.http.get<any[]>('/api/productos').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/productos`).subscribe({
       next: (productos) => {
         this.stats.totalProductos = productos.length;
         this.productosStockBajo = productos.filter((p: any) =>
@@ -249,7 +250,7 @@ export class AdminReportesComponent implements OnInit {
     });
 
     // Cargar usuarios
-    this.http.get<any[]>('/api/usuarios').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/usuarios`).subscribe({
       next: (usuarios) => {
         this.stats.totalUsuarios = usuarios.length;
         this.stats.usuariosActivos = usuarios.filter((u: any) => Number(u.estado) === 0).length;

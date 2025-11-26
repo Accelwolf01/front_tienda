@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface Categoria {
   idCategoria: string;
@@ -163,7 +164,7 @@ export class AdminCategoriasComponent implements OnInit {
   }
 
   cargarTiendas() {
-    this.http.get<any[]>('/api/tiendas').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/tiendas`).subscribe({
       next: (data) => {
         this.tiendas = data;
       },
@@ -201,7 +202,7 @@ export class AdminCategoriasComponent implements OnInit {
     }
 
     this.loading = true;
-    this.http.post('/api/categorias', this.formulario).subscribe({
+    this.http.post(`${environment.apiUrl}/categorias`, this.formulario).subscribe({
       next: () => {
         this.cargarCategorias();
         this.cancelar();
@@ -216,7 +217,7 @@ export class AdminCategoriasComponent implements OnInit {
 
   eliminar(categoria: Categoria) {
     if (confirm(`¿Eliminar la categoría "${categoria.nombreCategoria}"?`)) {
-      this.http.delete(`/api/categorias/${categoria.idCategoria}`).subscribe({
+      this.http.delete(`${environment.apiUrl}/categorias/${categoria.idCategoria}`).subscribe({
         next: () => {
           this.cargarCategorias();
         },

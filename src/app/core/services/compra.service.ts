@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Compra } from '../models/business.models';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CompraService {
-  private apiUrl = '/api/compras';
+  private apiUrl = `${environment.apiUrl}/compras`;
 
   constructor(private http: HttpClient) { }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 interface Producto {
   idProducto: string;
@@ -172,7 +173,7 @@ export class AdminProductosComponent implements OnInit {
 
   cargarProductos() {
     this.loading = true;
-    this.http.get<any[]>('/api/productos').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/productos`).subscribe({
       next: (data) => {
         this.productos = data.map(p => ({
           ...p,

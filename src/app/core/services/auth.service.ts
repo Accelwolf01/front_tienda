@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { LoginRequest, LoginResponse, Usuario } from '../models/auth.models';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = '/api/auth';
+    private apiUrl = `${environment.apiUrl}/auth`;
     private currentUserSubject: BehaviorSubject<Usuario | null>;
     public currentUser: Observable<Usuario | null>;
     private isBrowser: boolean;

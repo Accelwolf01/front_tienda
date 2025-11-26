@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { first } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -173,7 +174,7 @@ export class RegisterComponent implements OnInit {
       rol: 1
     };
 
-    this.http.post<any>('/api/auth/registro', usuarioData)
+    this.http.post<any>(`${environment.apiUrl}/auth/registro`, usuarioData)
       .pipe(first())
       .subscribe({
         next: (usuarioResponse) => {
@@ -186,7 +187,7 @@ export class RegisterComponent implements OnInit {
             idDueño: usuarioResponse.idUsuario
           };
 
-          this.http.post('/api/tiendas', tiendaData)
+          this.http.post(`${environment.apiUrl}/tiendas`, tiendaData)
             .pipe(first())
             .subscribe({
               next: () => {

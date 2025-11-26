@@ -12,11 +12,13 @@ export interface Tienda {
     activo: boolean;
 }
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
     providedIn: 'root'
 })
 export class TiendaService {
-    private apiUrl = '/api/tiendas';
+    private apiUrl = `${environment.apiUrl}/tiendas`;
 
     constructor(private http: HttpClient) { }
 

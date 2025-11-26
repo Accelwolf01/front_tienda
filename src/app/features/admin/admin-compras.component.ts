@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-compras',
@@ -118,7 +119,7 @@ export class AdminComprasComponent implements OnInit {
   }
 
   cargarTiendas() {
-    this.http.get<any[]>('/api/tiendas').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/tiendas`).subscribe({
       next: (data) => {
         this.tiendas = data;
       },
@@ -128,7 +129,7 @@ export class AdminComprasComponent implements OnInit {
 
   cargarCompras() {
     // Intentar cargar todas las compras
-    this.http.get<any[]>('/api/compras').subscribe({
+    this.http.get<any[]>(`${environment.apiUrl}/compras`).subscribe({
       next: (data) => {
         this.compras = data;
       },

@@ -49,6 +49,8 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
+        this.error = ''; // Limpiar errores previos
+
         this.authService.login(this.loginForm.value)
             .pipe(first())
             .subscribe({
@@ -64,7 +66,19 @@ export class LoginComponent implements OnInit {
                     }
                 },
                 error: error => {
-                    this.error = error.error?.message || 'Error de autenticación';
+                    console.error('Error de login:', error);
+
+                    // Manejo específico de errores
+                    if (error.status === 0) {
+                        this.error = 'No se puede conectar al servidor. El servidor puede estar iniciándose (esto puede tardar hasta 60 segundos en el plan gratuito). Por favor, intente nuevamente.';
+                    } else if (error.status === 401) {
+                        this.error = 'Usuario o contraseña incorrectos';
+                    } else if (error.status === 404) {
+                        this.error = 'Servicio no disponible. Verifique que el backend esté funcionando.';
+                    } else {
+                        this.error = error.error?.message || error.message || 'Error de autenticación. Por favor, intente nuevamente.';
+                    }
+
                     this.loading = false;
                 }
             });

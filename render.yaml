@@ -1,14 +1,9 @@
 services:
   - type: web
     name: front-tienda
-    env: static
-    buildCommand: chmod +x render-build.sh && ./render-build.sh
-    staticPublishPath: ./dist/fornt_tienda/browser
-    headers:
-      - path: /*
-        name: Cache-Control
-        value: no-cache
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    env: node
+    buildCommand: npm install && npm run build -- --configuration production
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production

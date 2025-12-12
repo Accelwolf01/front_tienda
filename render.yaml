@@ -2,7 +2,7 @@ services:
   - type: web
     name: front-tienda
     env: static
-    buildCommand: npm install && npm run build -- --configuration production
+    buildCommand: chmod +x render-build.sh && ./render-build.sh
     staticPublishPath: ./dist/fornt_tienda/browser
     headers:
       - path: /*

@@ -28,3 +28,8 @@ export interface Usuario {
     correo?: string; // Para mantener compatibilidad con el código existente
     tiendas?: { idTienda: string }[]; // Para mantener compatibilidad con el código existente
 }
+
+export interface ChangePasswordRequest {
+    contraseñaActual: string;
+    contraseñaNueva: string;
+}

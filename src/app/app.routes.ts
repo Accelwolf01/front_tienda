@@ -16,6 +16,7 @@ import { ReportesComponent } from './features/reportes/reportes.component';
 import { AdminDashboardComponent } from './features/admin/admin-dashboard.component';
 import { AdminUsersComponent } from './features/admin/admin-users.component';
 import { AdminUserFormComponent } from './features/admin/admin-user-form.component';
+import { ChangePasswordComponent } from './features/auth/change-password/change-password.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ export const routes: Routes = [
             { path: 'ventas', loadComponent: () => import('./features/admin/admin-ventas.component').then(m => m.AdminVentasComponent) },
             { path: 'compras', loadComponent: () => import('./features/admin/admin-compras.component').then(m => m.AdminComprasComponent) },
             { path: 'mermas', loadComponent: () => import('./features/admin/admin-mermas.component').then(m => m.AdminMermasComponent) },
+            { path: 'cambiar-password', component: ChangePasswordComponent },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },
@@ -57,6 +59,7 @@ export const routes: Routes = [
             { path: 'compras', component: ComprasComponent },
             { path: 'compras/nueva', component: CompraFormComponent },
             { path: 'compras/:id', component: CompraFormComponent },
+            { path: 'cambiar-password', component: ChangePasswordComponent },
             { path: '', redirectTo: 'reportes', pathMatch: 'full' }
         ]
     },

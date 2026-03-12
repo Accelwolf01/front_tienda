@@ -125,4 +125,8 @@ export class AuthService {
     hasFullAccess(): boolean {
         return this.isSystemAdmin();
     }
+
+    changePassword(request: { contraseñaActual: string, contraseñaNueva: string }): Observable<any> {
+        return this.http.post(`${this.apiUrl}/cambiar-password`, request);
+    }
 }

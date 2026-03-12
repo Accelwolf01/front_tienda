@@ -52,7 +52,7 @@ import { Router } from '@angular/router';
                 {{ (authService.currentUser | async)?.nombreCompleto }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Perfil</a></li>
+                <li><a class="dropdown-item" routerLink="/cambiar-password"><i class="bi bi-person me-2"></i>Cambiar Contraseña</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><button class="dropdown-item text-danger" (click)="logout()">
                   <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión

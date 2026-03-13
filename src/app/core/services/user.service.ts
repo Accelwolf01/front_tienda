@@ -32,4 +32,8 @@ export class UserService {
     delete(id: string): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
+
+    resetPassword(id: string, nuevaContrasena: string): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/${id}/restablecer-contrasena`, { nuevaContraseña: nuevaContrasena });
+    }
 }

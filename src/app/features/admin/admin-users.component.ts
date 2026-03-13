@@ -109,6 +109,9 @@ interface Tienda {
                       <a routerLink="/admin/usuarios/{{user.idUsuario}}" class="btn btn-outline-primary" title="Editar">
                         <i class="bi bi-pencil"></i>
                       </a>
+                      <button class="btn btn-outline-info" (click)="resetPassword(user)" *ngIf="user.rol !== 0" title="Restablecer Contraseña">
+                        <i class="bi bi-key"></i>
+                      </button>
                       <button class="btn btn-outline-warning" (click)="toggleStatus(user)" *ngIf="user.rol !== 0" [title]="user.estado === 0 ? 'Desactivar' : 'Activar'">
                         <i class="bi bi-power"></i>
                       </button>
@@ -237,5 +240,20 @@ export class AdminUsersComponent implements OnInit {
         alert('Error al actualizar estado del usuario');
       }
     });
+  }
+
+  resetPassword(user: UsuarioDto) {
+    const defaultPassword = 'Password123!';
+    if (confirm(`¿Estás seguro de que deseas restablecer la contraseña a "${defaultPassword}" para el usuario ${user.nombreCompleto}?`)) {
+      this.userService.resetPassword(user.idUsuario, defaultPassword).pipe(first()).subscribe({
+        next: (response) => {
+          alert(response.mensaje || 'Contraseña restablecida exitosamente');
+        },
+        error: (error) => {
+          console.error('Error restableciendo contraseña', error);
+          alert('Error al restablecer la contraseña del usuario');
+        }
+      });
+    }
   }
 }

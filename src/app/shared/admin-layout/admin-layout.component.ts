@@ -70,11 +70,6 @@ import { AuthService } from '../../core/services/auth.service';
               <i class="bi bi-key me-2"></i>Cambiar Contraseña
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/">
-              <i class="bi bi-box-arrow-left me-2"></i>Volver al Sistema
-            </a>
-          </li>
         </ul>
       </nav>
 
